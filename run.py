@@ -1,8 +1,8 @@
 from random import choice
-from time import sleep
+from time import sleep, time
 from TTS import *
-import os
-import argparse
+import os, argparse, img2txt
+
 
 
 def do_exercise(exercise):
@@ -18,9 +18,10 @@ def do_exercise(exercise):
         read("Switch sides")
     else:
         read(choice(["Halfway done", "keep it up", "15 seconds left", "finish_strong"]))
-        read_motivation()
+        # read_motivation()
     sleep(15)
     read(choice(["exercise complete","exercise finished"]))
+
 
 def print_exercise(exercise_index, exercises):
     """
@@ -37,15 +38,29 @@ def print_exercise(exercise_index, exercises):
         else:
             print("Exercise {}: {}".format(e+1, exercises[e]))
 
+    img2txt.img2txt(exercises[exercise_index])
+
 def workout(exercises):
     """
     Guides the user through a workout given the list of exercises.
     :param exercises: the list of exercises in the workout
     :return:
     """
+    start_time = time()
     for exercise_index in range(0, len(exercises)):
         print_exercise(exercise_index, exercises)
         do_exercise(exercises[exercise_index])
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+    img2txt.img2txt("exercise")
+    end_time = time()
+    duration = end_time - start_time
+    minutes = int(duration) // 60
+    seconds = duration % 60
+    read("Workout complete. Time elapsed {} minutes and {:.2f} seconds. great work!".format(minutes, seconds))
+    print("\n\n\n Duration: {} minutes and {:.2f} seconds".format(minutes, seconds))
+
+
 
 def back():
     """
@@ -58,8 +73,8 @@ def chest():
     :return: a random chest exercise from a list of chest exercises
     """
     # half moon push up
-    return choice(["push ups", "kettlebell press alternating", "kettlebell press together",\
-               "single kettlebell squeeze press", "decline pushup", "incline pushup", "decline kettlebell press"])
+    return choice(["push ups", "dumbbell press alternating", "dumbbell press together",\
+            "single dumbbell squeeze press", "decline pushup", "incline pushup", "decline floor press"])
 
 def shoulders():
     """
@@ -90,7 +105,7 @@ def triceps():
     """
     :return: a reandom tricep exercise from a list of tricep exercises
     """
-    return choice(["tricep pushup", "skull crusher", "chair dips"])
+    return choice(["tricep pushup", "skull crushers", "chair dips"])
 
 def pullup_bar():
     """
@@ -172,7 +187,7 @@ def random_workout(rounds):
     read("Random workout,let's get it!")
     exercises = list()
     for round in range(0, rounds*3):
-        exercises.append(choice([back(), chest(), shoulders(), core(), biceps(), triceps()]))
+        exercises.append(choice([back(), chest(), shoulders(), core(), biceps(), triceps(), legs()]))
     workout(exercises)
 
 def pullup_bar_workout(rounds):
