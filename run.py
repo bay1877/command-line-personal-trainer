@@ -3,8 +3,6 @@ from time import sleep, time
 from TTS import *
 import os, argparse, img2txt
 
-
-
 def do_exercise(exercise):
     """
     Guides the user through a given exercise.
@@ -18,7 +16,6 @@ def do_exercise(exercise):
         read("Switch sides")
     else:
         read(choice(["Halfway done", "keep it up", "15 seconds left", "finish_strong"]))
-        # read_motivation()
     sleep(15)
     read(choice(["exercise complete","exercise finished"]))
 

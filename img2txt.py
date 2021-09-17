@@ -1,9 +1,9 @@
 """
-@author: Viet Nguyen <nhviet1009@gmail.com>
+original author: Viet Nguyen <nhviet1009@gmail.com>
+Modified/adapted: Bradley Yoder
 """
 import cv2
 import numpy as np
-
 
 def try_img_to_text(img_path):
     try:
@@ -44,9 +44,7 @@ def img2txt(excercise):
         if try_img_to_text("images/{}.{}".format(excercise, ext)):
             break
 
-
 if __name__ == '__main__':
     # img2txt("push-ups")
     # img2txt("pullup")
     img2txt("exercise")
-
