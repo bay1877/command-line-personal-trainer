@@ -84,7 +84,7 @@
 
 This project was born in 2020 during times of quarantine and social-distancing. Gyms were closed, and motivation to stay fit was low. This project aimed to both help me generate at-home workouts and help me stay motivated toward fitness/health.
 
-Command Line Personal Trainer provides a command line interface that generates and guides the user through a veriety of different workouts. Many workouts require very little to no equipment.
+Command Line Personal Trainer provides a command line interface that generates and guides the user through a variety of different workouts. Many workouts require very little to no equipment.
 
 ### Built With
 
