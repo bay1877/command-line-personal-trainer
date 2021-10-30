@@ -113,7 +113,7 @@ This project assumes you have python installed.
    ```
 2. Enter the repo directory
    ```sh
-   cd WorkoutGenerator
+   cd command-line-personal-trainer
    ```
 2. Setup and enter the virtual environment.
    ```sh
